@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel and PDF</title>
+</head>
+<body>
+    <h1>Upload Excel and PDF</h1>
+    <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
+        <label for="excel">Upload Excel File:</label>
+        <input type="file" id="excel" name="excel" accept=".xlsx"><br><br>
+        <label for="pdf">Upload PDF File:</label>
+        <input type="file" id="pdf" name="pdf" accept=".pdf"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="result">
+        <p>Output will be displayed here.</p>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Printed.pdf';
+                link.click();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
