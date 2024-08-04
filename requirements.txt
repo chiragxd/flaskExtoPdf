@@ -88,7 +88,6 @@ libclang==16.0.6
 make==0.1.6.post2
 Markdown==3.4.4
 MarkupSafe==2.1.2
-mask-rcnn==2.1
 matplotlib==3.7.2
 matplotlib-inline==0.1.6
 mistune==3.0.1
