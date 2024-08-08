@@ -1,5 +1,6 @@
-Flask==2.3.3
-pandas==2.0.3
-openpyxl==3.1.2
-reportlab==4.0.4
-PyPDF2==3.1.0
+Flask
+pandas
+openpyxl
+reportlab
+PyPDF2
+gunicorn
